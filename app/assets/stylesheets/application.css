@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+ .sorted {
+    background-color: #f0f0f0; /* Light grey background for sorted column */
+    font-weight: bold;
+  }
+  
+  /* Additional styles for making the views distinct */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  

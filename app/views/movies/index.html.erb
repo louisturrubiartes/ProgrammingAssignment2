@@ -2,13 +2,33 @@
 
 <h1>Movies</h1>
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th class="<%= 'sorted' if params[:sort_by] == 'title' %>">
+        <%= link_to "Title #{'▲' if params[:sort_by] == 'title'}", movies_path(sort_by: 'title') %>
+      </th>
+      <th class="<%= 'sorted' if params[:sort_by] == 'rating' %>">
+        <%= link_to "Rating #{'▲' if params[:sort_by] == 'rating'}", movies_path(sort_by: 'rating') %>
+      </th>
+      <th class="<%= 'sorted' if params[:sort_by] == 'release_date' %>">
+        <%= link_to "Release Date #{'▲' if params[:sort_by] == 'release_date'}", movies_path(sort_by: 'release_date') %>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date.strftime("%B %d, %Y") %></td>
+        <td><%= link_to "Show this movie", movie %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to "New movie", new_movie_path %>
+
